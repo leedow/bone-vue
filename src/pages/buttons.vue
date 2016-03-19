@@ -1,26 +1,21 @@
 <template>
 	<header-layout title='Bone Vue'>
 		<header-dock align='left'>
-			<a v-link="{ path: '/' }">返回</a>
+			<a v-link="{ path: '/' }"><Btn type="back"></Btn></a>
 		</header-dock>
-		Tabs
+		Buttons
 		<header-dock align='right'>
 			<a href="">Github</a>
 		</header-dock>
 	</header-layout>
 	<layout-main>
-		<layout-box>
-			<tabs-horizon>
-				<tabs-item-horizon current=true size=3>Item1</tabs-item-horizon>
-				<tabs-item-horizon size=3>Item2</tabs-item-horizon>
-			</tabs-horizon>
-		</layout-box>
-		<layout-box m="1000">
-			<tabs-vertical>
-				<tabs-item-vertical arrow=true iconcss=true icon='home'>
-					<a v-link="{ path: '/' }">tabs</a>
-				</tabs-item-vertical>
-			</tabs-vertical>
+		 
+		<layout-box p="1111">
+			 <Btn>Buttons</Btn>
+			 <Btn icon="home">Buttons</Btn>
+			 <Btn size="lg" type="primary" icon="settings">Buttons</Btn>
+			 <Btn type="warm">Buttons</Btn>
+			 <Btn type="warm" block=true size='lg'>Buttons</Btn>
 		</layout-box>			
 	</layout-main>
 </template>
@@ -29,6 +24,8 @@
 import {HeaderLayout, HeaderDock} from '../components/header'
 import {LayoutBox, LayoutMain} from '../components/layouts'
 import {TabsHorizon, TabsItemHorizon, TabsVertical, TabsItemVertical} from '../components/tabs'
+import {Btn} from '../components/buttons'
+
 
 export default {
 	components:{
@@ -39,7 +36,8 @@ export default {
 		TabsHorizon,
 		TabsItemHorizon,
 		TabsVertical,
-		TabsItemVertical
+		TabsItemVertical,
+		Btn
 	},
 	data () {
 		return {
