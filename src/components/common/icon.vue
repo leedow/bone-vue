@@ -1,5 +1,5 @@
 <template>
-	<i class="icon iconfont icon-{{icon}}"></i>
+	<i class="icon iconfont icon-{{type}}"></i>
 </template>
 
 <script>

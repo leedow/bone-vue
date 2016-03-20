@@ -1,6 +1,6 @@
 <template>
-	<button class="{{type}}{{blank}} {{size}} {{block}}">
-		<i class="icon iconfont icon-{{icon}}"></i>
+	<button :class="[type+blank, size, block]" @click="clickEvent">
+		<i v-if="icon" class="icon iconfont icon-{{icon}}"></i>
 		<slot></slot>
 	</button>
 </template>
@@ -32,11 +32,21 @@ export default {
 			coerce (val){
 				return val?'bo-btn-block':'';
 			}
+		},
+		handleClick: {
+			coerce (val) {
+				return val?val:function(){};
+			}
+		}
+	},
+	methods: {
+		clickEvent: function(){
+			this.handleClick();
 		}
 	},
 	data () {
 		return {
-			test: 'test'
+			
 		}
 	}
 }

@@ -1,7 +1,7 @@
 <template>
 	<header-layout title='Bone Vue'>
 		<header-dock align='left'>
-			<a href="">Menu</a>
+			<a v-link="{ path: '/' }"><Icon type="back"></Icon></a>
 		</header-dock>
 		Bone Vue
 		<header-dock align='right'>
@@ -11,16 +11,16 @@
 	<layout-main>
 		<layout-box>
 			<tabs-vertical>
-				<tabs-item-vertical arrow=true iconcss=true icon='home'>
+				<tabs-item-vertical arrow=true>
 					<a v-link="{ path: '/tabs' }">菜 单</a>
 				</tabs-item-vertical>
-				<tabs-item-vertical arrow=true iconcss=true icon='home'>
+				<tabs-item-vertical arrow=true>
 					<a v-link="{ path: '/buttons' }">按 钮</a>
 				</tabs-item-vertical>
-				<tabs-item-vertical arrow=true iconcss=true icon='home'>
-					<a v-link="{ path: '/tabs' }">表 单</a>
+				<tabs-item-vertical arrow=true>
+					<a v-link="{ path: '/form' }">表 单</a>
 				</tabs-item-vertical>
-				<tabs-item-vertical arrow=true iconcss=true icon='home'>
+				<tabs-item-vertical arrow=true>
 					<a v-link="{ path: '/tabs' }">数字选择</a>
 				</tabs-item-vertical>
 			</tabs-vertical>
@@ -33,7 +33,7 @@
 import {HeaderLayout, HeaderDock} from '../components/header'
 import {LayoutBox, LayoutMain} from '../components/layouts'
 import {TabsHorizon, TabsItemHorizon, TabsVertical, TabsItemVertical} from '../components/tabs'
-
+import {Icon} from '../components/common'
 export default {
 	components:{
 		HeaderLayout, 
@@ -43,7 +43,8 @@ export default {
 		TabsHorizon,
 		TabsItemHorizon,
 		TabsVertical,
-		TabsItemVertical
+		TabsItemVertical,
+		Icon
 	},
 	data () {
 		return {
