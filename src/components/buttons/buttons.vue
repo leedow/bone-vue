@@ -32,16 +32,12 @@ export default {
 			coerce (val){
 				return val?'bo-btn-block':'';
 			}
-		},
-		handleClick: {
-			coerce (val) {
-				return val?val:function(){};
-			}
 		}
 	},
 	methods: {
 		clickEvent: function(){
-			this.handleClick();
+			//alert('fsd')
+			this.$dispatch('btn-click', '');
 		}
 	},
 	data () {

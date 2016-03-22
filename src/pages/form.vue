@@ -10,29 +10,29 @@
 	</header-layout>
 	<layout-main>
 		<layout-box>
-			<tabs-horizon>
-				<tabs-item-horizon current=true size=6>移动样式</tabs-item-horizon>
-				<tabs-item-horizon size=6>传统样式</tabs-item-horizon>
-			</tabs-horizon>
-		</layout-box>
-		<layout-box m="1000">
-			<form-group type='blank'>		
-				<form-input place-holder="请输入账号" label="账 号" size="lg"></form-input>
-				<form-input place-holder="请输入密码" label="密 码" type="password" size="lg"></form-input>
-			</form-group>
-		</layout-box>	 
-		<layout-box m='1000'>
 			<form-group type='blank'>		
 				<form-input place-holder="请输入账号" icon="people" size="lg"></form-input>
 				<form-input place-holder="请输入密码" type="password" icon="lock" size="lg"></form-input>
 			</form-group>
-		</layout-box>	 	
+		</layout-box>	
+
+		<layout-box m="1000">
+			<form-group type='blank' v-ref:myform>		
+				<form-input place-holder="请输入账号" name="account" label="账 号" size="lg" format='email'></form-input>
+				<form-input place-holder="请输入密码" name="password" label="密 码" type="password" size="lg"></form-input>
+			</form-group>
+		</layout-box>	 
+		  	
+		<grid-row p='1111'>
+			<Btn type="primary" size="lg" block=true @btn-click="submit">提 交</Btn>
+		</grid-row>
+		
 	</layout-main>
 </template>
 
 <script>
 import {HeaderLayout, HeaderDock} from '../components/header'
-import {LayoutBox, LayoutMain} from '../components/layouts'
+import {LayoutBox, LayoutMain, GridRow, GridCol} from '../components/layouts'
 import {TabsHorizon, TabsItemHorizon, TabsVertical, TabsItemVertical} from '../components/tabs'
 import {Btn} from '../components/buttons'
 import {Icon} from '../components/common'
@@ -52,16 +52,31 @@ export default {
 		Btn,
 		Icon,
 		FormGroup,
-		FormInput
+		FormInput,
+		GridRow,
+		GridCol
 	},
-	methods: {
-		test: function(e){
-			alert('Click Me');
+	methods:{
+		submit: function(){
+		 	//alert('submit')
+			this.$broadcast('form-verify', '');
+			if(this.$refs.myform.pass){
+				console.log('sending data')
+				console.log(this.$refs.myform.data)
+			} else {
+				console.log('data wrong')
+			}
+			
+		}
+	},
+	events: {
+		'input-wrong': function(){
+			//alert('cuowu')
 		}
 	},
 	data () {
 		return {
-			 
+			  
 		}
 	}
 }

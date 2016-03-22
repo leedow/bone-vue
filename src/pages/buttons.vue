@@ -11,8 +11,7 @@
 	<layout-main>
 		<layout-box p="1111">
 			 <Btn>Buttons</Btn>
-			 <Btn icon="home">Buttons</Btn>
-			 
+			 <Btn icon="home">Buttons</Btn>		 
 		</layout-box>	 
 		<layout-box m="1000" p="1111">
 			 
@@ -22,7 +21,7 @@
 		</layout-box>	
 		<layout-box m="1000" p="1111">
 			 
-			 <Btn type="warm" block=true size='lg' :handle-click=test>Click Me</Btn>
+			 <Btn type="warm" block=true size='lg' v-on:btn-click="test">Click Me</Btn>
 		</layout-box>			
 	</layout-main>
 </template>
@@ -48,7 +47,7 @@ export default {
 		Btn,
 		Icon
 	},
-	methods: {
+	events: {
 		test: function(e){
 			alert('Click Me');
 		}
