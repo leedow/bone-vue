@@ -21,7 +21,7 @@
 					<a v-link="{ path: '/form' }">表 单</a>
 				</tabs-item-vertical>
 				<tabs-item-vertical arrow=true>
-					<a v-link="{ path: '/tabs' }">数字选择</a>
+					<a v-link="{ path: '/list' }">下拉刷新列表</a>
 				</tabs-item-vertical>
 			</tabs-vertical>
 		</layout-box>			
