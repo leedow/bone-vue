@@ -19,7 +19,7 @@
 		<layout-box m="1000">
 			<form-group type='blank' v-ref:myform>		
 				<form-input place-holder="请输入账号" name="account" label="账 号" size="lg" format='email'></form-input>
-				<form-input place-holder="请输入密码" name="password" label="密 码" type="password" size="lg"></form-input>
+				<form-input place-holder="请输入密码" name="password" label="密 码" required=true type="password" size="lg"></form-input>
 			</form-group>
 		</layout-box>	 
 		  	
@@ -64,6 +64,7 @@ export default {
 				console.log('sending data')
 				console.log(this.$refs.myform.data)
 			} else {
+				//this.$refs.myform.setNotice('账号密码不正确')
 				console.log('data wrong')
 			}
 			

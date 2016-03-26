@@ -2,8 +2,9 @@
 	 <div :class="[size.divsize]">
 	 	<label class="bo-label" v-if="label.text" for="">{{label.text}}</label>
 	 	<div :class="[icon.css, state]">
-	 		<input :class="[size.inputsize, formControl, label.css]" type="{{type}}" name="{{name}}" v-model="val" placeholder="{{placeHolder}}">
+	 		<input :class="[size.inputsize, formControl, label.css]" type="{{type}}" name="{{name}}" v-model="val" placeholder="{{placeHolder}}" @focus="focus" @blur="blur">
 	 		<i v-if="icon.text" class="icon iconfont" :class="[icon.text]"></i>
+	 		<div v-if="notice.flag" class="bo-tip bo-tip-top">{{notice.text}}</div>
 	 	</div>
 	 </div>
 </template>
@@ -93,6 +94,7 @@ export default {
 	methods: {
 		verify: function(){
 			//console.log('verify input');
+			this.notice.text = '';
 			var res = Format.do(this.required, this.format, this.val);
 			var msg = {
 				name: this.name,
@@ -101,6 +103,7 @@ export default {
 			}
 			if(!res.state){
 				this.changeState('wrong');
+				this.notice.text = res.msg;
 				this.$dispatch('input-wrong', msg);
 			} else {
 				this.changeState('');
@@ -109,6 +112,18 @@ export default {
 		},
 		changeState: function(state){
 			this.state = 'bo-input-'+state;
+		},
+		focus: function(){
+			if(this.state == 'bo-input-wrong'){
+				this.changeState('notice');
+				this.notice.flag = true;
+			}
+		},
+		blur: function(){
+			if(this.state == 'bo-input-notice'){
+				this.changeState('wrong');
+				this.notice.flag = false;
+			}
 		}
 	},
 	events: {
@@ -118,7 +133,11 @@ export default {
 	},
 	data () {
 		return {
-			val: ''
+			val: '',
+			notice: {
+				flag: false,
+				text: ''
+			}
 		}
 	}
 }

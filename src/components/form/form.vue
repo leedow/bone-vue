@@ -1,6 +1,7 @@
 <template>
 	 <div :class="[type]">
 	 	<slot></slot>
+	 	<p class="form-notice" v-if="notice.show">{{notice.text}}</p>
 	 </div>
 </template>
 
@@ -29,6 +30,12 @@ export default {
 		removeData: function(key){
 			this.pass = false;
 			delete this.data[key];
+		},
+		setNotice: function(msg){
+			this.notice = {
+				show: true,
+				text: msg
+			}
 		}
 	},
 	events: {
@@ -45,7 +52,11 @@ export default {
 	data () {
 		return {
 			data: {},
-			pass: true
+			pass: true,
+			notice: {
+				show: false,
+				text: ''
+			}
 		}
 	}
 }
