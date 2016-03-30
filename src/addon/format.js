@@ -7,6 +7,10 @@ var Format = {
 		email: {
 			reg: /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/,
 			msg: '邮箱格式错误'
+		},
+		phone: {
+			reg: /^\d{11}$/,
+			msg: '手机格式错误'
 		}
 	},
 	do: function(required, format, value){

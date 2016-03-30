@@ -1,7 +1,7 @@
 <template>
-	<button :class="[type+blank, size, block]" @click="clickEvent">
+	<button :class="[type+blank, size, block]" v-bind:style=css @click="clickEvent">
 		<i v-if="icon" class="icon iconfont icon-{{icon}}"></i>
-		<slot></slot>
+		{{name}}
 	</button>
 </template>
 
@@ -32,12 +32,20 @@ export default {
 			coerce (val){
 				return val?'bo-btn-block':'';
 			}
+		},
+		name: {
+			default: ''
+		},
+		css: {
+			default: {}
 		}
 	},
 	methods: {
-		clickEvent: function(){
-			//alert('fsd')
+		clickEvent: function(){		 
 			this.$dispatch('btn-click', '');
+		},
+		setName: function(name){
+			this.name = name;
 		}
 	},
 	data () {

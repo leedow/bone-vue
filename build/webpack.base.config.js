@@ -1,9 +1,12 @@
 module.exports = {
-  entry: './src/main.js',
+  entry: {
+     main: './src/main.js',
+     global: './src/bone-global.js'
+  },
   output: {
     path: './dist',
     publicPath: 'dist/',
-    filename: 'build.js'
+    filename: '[name].js'
   },
   module: {
     loaders: [

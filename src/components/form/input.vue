@@ -1,5 +1,5 @@
 <template>
-	 <div :class="[size.divsize]">
+	 <div :class="[size.divsize, underline]">
 	 	<label class="bo-label" v-if="label.text" for="">{{label.text}}</label>
 	 	<div :class="[icon.css, state]">
 	 		<input :class="[size.inputsize, formControl, label.css]" type="{{type}}" name="{{name}}" v-model="val" placeholder="{{placeHolder}}" @focus="focus" @blur="blur">
@@ -89,6 +89,11 @@ export default {
 		},
 		format: {//数据格式
 			default: ''
+		},
+		underline: {
+			coerce (val){
+				return val?'bo-form-item-noline':'';
+			}
 		}
 	},
 	methods: {
@@ -105,9 +110,11 @@ export default {
 				this.changeState('wrong');
 				this.notice.text = res.msg;
 				this.$dispatch('input-wrong', msg);
+				this.pass = false;
 			} else {
 				this.changeState('');
 				this.$dispatch('input-pass', msg);
+				this.pass = true;
 			}
 		},
 		changeState: function(state){
@@ -124,6 +131,7 @@ export default {
 				this.changeState('wrong');
 				this.notice.flag = false;
 			}
+			this.verify();
 		}
 	},
 	events: {
@@ -137,7 +145,8 @@ export default {
 			notice: {
 				flag: false,
 				text: ''
-			}
+			},
+			pass:true
 		}
 	}
 }

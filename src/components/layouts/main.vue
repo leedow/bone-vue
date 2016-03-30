@@ -1,5 +1,5 @@
 <template>
-	<section class="bo-layout-main">
+	<section class="bo-layout-main bo-layout-full">
 		<slot></slot>
 	</section>
 </template>

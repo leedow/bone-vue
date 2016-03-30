@@ -1,5 +1,5 @@
 <template>
-	<header class="bo-layout-header">
+	<header class="bo-layout-header bo-layout-full">
 		<div class="bo-header">
 			<slot></slot>
 		</div>
