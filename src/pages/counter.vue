@@ -9,26 +9,13 @@
 		</header-dock>
 	</header-layout>
 	<layout-main>
-		<layout-box>
+		<layout-box p='1111'>
 			<form-group type='blank'>		
-				<form-input place-holder="请输入账号" icon="people" size="lg"></form-input>
-				<form-input place-holder="请输入密码" type="password" icon="lock" size="lg"></form-input>
+				<form-counter max=5 min=2 val=3></form-counter>
 			</form-group>
+			<div class="bo-clear"></div>
 		</layout-box>	
-		<layout-box m="1000">
-			<form-group type='blank' v-ref:myform>		
-				<form-input place-holder="请输入账号" name="account" label="账 号" size="lg" format='email'></form-input>
-				<form-input place-holder="请输入密码" name="password" label="密 码" required=true type="password" size="lg"></form-input>
-				<form-input place-holder="请输入手机号" name="phone" label="手机号" format='phone' size="lg"></form-input>
-				<form-code 	name="code"
-							label="验证码"
-							place-holder="输入验证码"></form-code>
-				<form-select :data="select" place-holder="请选择" name="se" label="下 拉" required=true type="password" size="lg"></form-select>
-			</form-group>
-		</layout-box>	 		  	
-		<grid-row p='1111'>
-			<Btn type="primary" size="lg" block=true @btn-click="submit" name="提 交"></Btn>
-		</grid-row>
+		 
 	</layout-main>
 </template>
 
@@ -38,7 +25,7 @@ import {LayoutBox, LayoutMain, GridRow, GridCol} from '../components/layouts'
 import {TabsHorizon, TabsItemHorizon, TabsVertical, TabsItemVertical} from '../components/tabs'
 import {Btn} from '../components/buttons'
 import {Icon} from '../components/common'
-import {FormGroup, FormInput, FormSelect, FormCode} from '../components/form'
+import {FormGroup, FormInput, FormSelect, FormCode, FormCounter} from '../components/form'
 
 
 export default {
@@ -58,7 +45,8 @@ export default {
 		FormSelect,
 		GridRow,
 		GridCol,
-		FormCode
+		FormCode,
+		FormCounter
 	},
 	methods:{
 		submit: function(){

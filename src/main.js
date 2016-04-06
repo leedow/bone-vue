@@ -8,6 +8,9 @@ import Tabs from './pages/tabs.vue'
 import Buttons from './pages/buttons.vue'
 import form from './pages/form.vue'
 import list from './pages/list.vue'
+import counter from './pages/counter.vue'
+import menu from './pages/menu.vue'
+import shopping from './pages/shopping.vue'
 
 Vue.use(VueRouter);
 var router = new VueRouter()
@@ -27,6 +30,15 @@ router.map({
     },
     '/list': {
         component: list
+    },
+    '/counter': {
+        component: counter
+    },
+    '/menu': {
+        component: menu
+    },
+    '/shopping': {
+        component: shopping
     }
 })
 

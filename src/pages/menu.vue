@@ -3,15 +3,27 @@
 		<header-dock align='left'>
 			<a v-link="{ path: '/' }"><Icon type="back"></Icon></a>
 		</header-dock>
-		List
+		Tabs side
 		<header-dock align='right'>
 			<a href="">Github</a>
 		</header-dock>
 	</header-layout>
-	<layout-main>
+	<layout-side-menu>
+		<tabs-side>
+			<tabs-item-side>
+					星期一
+			</tabs-item-side>
+			<tabs-item-side current=true>
+					星期二
+			</tabs-item-side>
+		</tabs-side>
+	</layout-side-menu>
+	<layout-main class="bo-side-p">
 		<list v-ref:mylist @list-scroll="loading">
 			<list-item v-for="item in data" >
-				<layout-box p='1111'>{{item.obj.name}}</layout-box>
+				<layout-box p="1111">
+					<product :data="pro"></product>	
+				</layout-box>
 			</list-item>		 
 		</list> 	
 	</layout-main>
@@ -20,11 +32,12 @@
 <script>
 import {HeaderLayout, HeaderDock} from '../components/header'
 import {LayoutBox, LayoutMain, LayoutSideMenu, GridRow, GridCol} from '../components/layouts'
-import {TabsHorizon, TabsItemHorizon, TabsVertical, TabsItemVertical} from '../components/tabs'
+import {TabsHorizon, TabsItemHorizon, TabsVertical, TabsItemVertical, TabsSide, TabsItemSide} from '../components/tabs'
 import {Btn} from '../components/buttons'
 import {Icon} from '../components/common'
 import {FormGroup, FormInput} from '../components/form'
 import {List, ListItem} from '../components/list'
+import {Product} from '../jishibao'
 
 
 export default {
@@ -38,12 +51,15 @@ export default {
 		TabsItemHorizon,
 		TabsVertical,
 		TabsItemVertical,
+		TabsSide,
+		TabsItemSide,
 		Btn,
 		Icon,
 		FormGroup,
 		FormInput,
 		List,
-		ListItem
+		ListItem,
+		Product
 	},
 	ready:function(){
 		this.loading();
@@ -72,7 +88,12 @@ export default {
 	},
 	data () {
 		return {
-			data: []
+			data: [],
+			pro: {
+				name:'test',
+				description: 'description',
+				amount: 1
+			}
 		}
 	}
 }

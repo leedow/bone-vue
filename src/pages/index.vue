@@ -23,6 +23,15 @@
 				<tabs-item-vertical arrow=true>
 					<a v-link="{ path: '/list' }">下拉刷新列表</a>
 				</tabs-item-vertical>
+				<tabs-item-vertical arrow=true>
+					<a v-link="{ path: '/counter' }">数字选择</a>
+				</tabs-item-vertical>
+				<tabs-item-vertical arrow=true>
+					<a v-link="{ path: '/menu' }">侧边菜单</a>
+				</tabs-item-vertical>
+				<tabs-item-vertical arrow=true>
+					<a v-link="{ path: '/shopping' }">购物车Dock</a>
+				</tabs-item-vertical>
 			</tabs-vertical>
 		</layout-box>			
 	</layout-main>

@@ -1,5 +1,5 @@
 <template>
-	<section class="bo-layout-main bo-layout-full">
+	<section class="bo-layout-main bo-layout-full{{class}}">
 		<slot></slot>
 	</section>
 </template>
@@ -7,24 +7,11 @@
 <script>
 export default {
 	props:{
-		m :{
-			coerce (val) {
-				if(val != undefined){
-					return ' bo-m' + val;
-				} else {
-					return '';
-				}
+		class: {
+			coerce (val){
+				return val?' '+val:'';
 			}
-		},
-		p: {
-			coerce (val) {
-				if(val != undefined){
-					return ' bo-p' + val;
-				} else {
-					return '';
-				}
-			}
-		}
+		}		
 	},
 	data () {
 		return {

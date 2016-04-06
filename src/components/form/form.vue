@@ -1,7 +1,9 @@
 <template>
 	 <div :class="[type]">
 	 	<slot></slot>
-	 	<p class="form-notice" v-if="notice.show">{{notice.text}}</p>
+	 	<p class="form-notice bo-notice-warm" v-if="notice.show">
+		<i class="icon iconfont icon-roundclosefill"></i>
+	 	{{notice.text}}</p>
 	 </div>
 </template>
 
@@ -36,6 +38,13 @@ export default {
 				show: true,
 				text: msg
 			}
+			var _this = this;
+			var timer = setTimeout(function(){
+				_this.notice = {
+					show: false,
+					text: ''
+				}
+			}, 5000);
 		}
 	},
 	events: {
