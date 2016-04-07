@@ -10,11 +10,11 @@
 	</header-layout>
 	<layout-side-menu>
 		<tabs-side>
-			<tabs-item-side>
-					星期一
+			<tabs-item-side disable=true tag="1111">
+					星期一  
 			</tabs-item-side>
 			<tabs-item-side current=true>
-					星期二
+					星期二 
 			</tabs-item-side>
 		</tabs-side>
 	</layout-side-menu>

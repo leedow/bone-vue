@@ -62,12 +62,14 @@ export default {
 				this.val++;
 			}
 			this.setbtn();
+			this.$dispatch('counter-change', this.val);
 		},
 		sub: function(){
 			if(this.val > this.min){
 				this.val--;	
 			}
 			this.setbtn();
+			this.$dispatch('counter-change', this.val);
 		}
 	},
 	events: {

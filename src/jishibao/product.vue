@@ -11,7 +11,7 @@
 			￥<span>{{data.price}}</span> /{{data.unit}} 
 		</div>
 		<div class="mount">
-			<form-counter type='2' :val="data.amount"></form-counter>
+			<form-counter type='2' :val="data.amount" @counter-change="buyEvent"></form-counter>
 		</div>		
 	</div>
 	<div class="bo-clear"></div>
@@ -27,6 +27,18 @@ export default {
 	props:{
 		data: {
 			default: {}
+		} 
+	},
+	events: {
+
+	},
+	methods: {
+		buyEvent: function(val){
+			var pra = {
+				val: val,
+				id: this.data.id
+			}
+			this.$dispatch('product-buy', pra);
 		}
 	},
 	data () {

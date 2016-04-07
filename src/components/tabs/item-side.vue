@@ -1,6 +1,7 @@
 <template>
-	<li class="bo-tab-item{{current}}{{size}}" data-id="{{id}}" @click="clickEvent">
+	<li class="bo-tab-item" :class="[current, size, style.disable, style.type]" data-id="{{id}}" @click="clickEvent">
 		<slot></slot>
+		<p v-if="tag">{{tag}}</p>
 	</li>
 </template>
 
@@ -9,17 +10,32 @@ export default {
 	props: {
 		current: {
 			coerce (val){
-				return val?' bo-tab-item-current':'';
+				return val?'bo-tab-item-current':'';
 			}
 		},
 		size: {
 			coerce (val){
-				return val?' bo-col-'+val:'';
+				return val?'bo-col-'+val:'';
 			}
+		},
+		disable: {
+			default: false
 		},
 		id: {
 			default: ''
+		},
+		tag: {
+			default: false
 		}
+	},
+	ready: function(){
+		if(this.disable){
+			this.style.disable = 'tab-item-disable';
+		}
+		if(this.tag != false){
+			this.style.type = 'tab-item-tag';
+		}
+		
 	},
 	events: {
 		'tab-item-click': function(msg){ 
@@ -28,12 +44,14 @@ export default {
 	},
 	methods: {
 		clickEvent: function(){
-			this.$dispatch('tab-item-click', this.id);
-			this.setCurrent(true);
+			if(!this.disable){
+				this.$dispatch('tab-item-click', this.id);
+				this.setCurrent(true);
+			}
 		},
 		setCurrent: function(state){
 			if(state){
-				this.current = ' bo-tab-item-current';
+				this.current = 'bo-tab-item-current';
 			} else {
 				this.current = '';
 			}
@@ -41,6 +59,10 @@ export default {
 	},
 	data () {
 		return {
+			style: {
+				disable: '',
+				type: ''
+			}
 		}
 	}
 }

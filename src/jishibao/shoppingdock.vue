@@ -4,7 +4,7 @@
 			总计 <span>{{total}}</span> 元
 		</div>
 		<div id="buy">
-			<btn type="warm" size="sm" name="去结算" icon="cart"></btn>
+			<btn type="warm" size="sm" name="去结算" icon="cart" @click="goEvent"></btn>
 		</div>
 	</div>
 </template>
@@ -22,6 +22,11 @@ export default {
 		 total: {
 		 	default: 0
 		 }
+	},
+	methods: {
+		goEvent: function(){
+			this.$dispatch('shoppingdock-go', '');
+		}
 	},
 	data () {
 		return {
