@@ -4,7 +4,7 @@
 			总计 <span>{{total}}</span> 元
 		</div>
 		<div id="buy">
-			<btn type="warm" size="sm" name="去结算" icon="cart" @click="goEvent"></btn>
+			<btn type="warm" size="sm" :name="name" icon="cart" @click="goEvent"></btn>
 		</div>
 	</div>
 </template>
@@ -21,6 +21,9 @@ export default {
 	props:{
 		 total: {
 		 	default: 0
+		 },
+		 name: {
+		 	default: '去结算'
 		 }
 	},
 	methods: {
