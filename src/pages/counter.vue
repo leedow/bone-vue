@@ -11,7 +11,8 @@
 	<layout-main>
 		<layout-box p='1111'>
 			<form-group type='blank'>		
-				<form-counter max=5 min=2 val=3></form-counter>
+				<form-counter v-ref:mycounter max=5 min=2 val=3></form-counter>
+				<btn type="primary" size="sm" name="回滚" @btn-click="rollback"></btn>
 			</form-group>
 			<div class="bo-clear"></div>
 		</layout-box>	
@@ -60,6 +61,9 @@ export default {
 				console.log('data wrong')
 			}
 			
+		},
+		rollback: function(){
+			this.$refs.mycounter.rollback();
 		}
 	},
 	events: {
