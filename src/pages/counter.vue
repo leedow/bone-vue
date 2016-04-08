@@ -13,10 +13,20 @@
 			<form-group type='blank'>		
 				<form-counter v-ref:mycounter max=5 min=2 val=3></form-counter>
 				<btn type="primary" size="sm" name="回滚" @btn-click="rollback"></btn>
+				<btn type="primary" size="sm" name="禁止＋" @btn-click="disabler"></btn>
+				<btn type="primary" size="sm" name="禁止－" @btn-click="disablel"></btn>
 			</form-group>
 			<div class="bo-clear"></div>
 		</layout-box>	
-		 
+		<layout-box p='1111'>
+			<form-group type='blank'>		
+				<form-counter v-ref:mycounter type="2" max=5 min=2 val=3></form-counter>
+				<btn type="primary" size="sm" name="回滚" @btn-click="rollback"></btn>
+				<btn type="primary" size="sm" name="禁止＋" @btn-click="disabler"></btn>
+				<btn type="primary" size="sm" name="禁止－" @btn-click="disablel"></btn>
+			</form-group>
+			<div class="bo-clear"></div>
+		</layout-box>	 
 	</layout-main>
 </template>
 
@@ -64,6 +74,12 @@ export default {
 		},
 		rollback: function(){
 			this.$refs.mycounter.rollback();
+		},
+		disablel: function(){
+			this.$refs.mycounter.setLbtn(false);
+		},
+		disabler: function(){
+			this.$refs.mycounter.setRbtn(false);
 		}
 	},
 	events: {

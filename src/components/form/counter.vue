@@ -1,10 +1,10 @@
 <template>
 	<div class="bo-counter{{type}}">
-		<button class="counter-btn plus" :class="[style.btn,style.btn2,style.lbtn]" @click="sub">
+		<button class="counter-btn plus" :class="[style.btn, style.btn2, style.lbtn]" @click="sub">
 			<i class="icon iconfont icon-move"></i>
 		</button>
-		<input v-ref:myinput type="text" class="bo-input bo-input-sm counter-input" v-model="val" @blur="change" readonly>
-		<button class="counter-btn sub" :class="[style.btn,style.btn2,style.rbtn]" @click="plus">
+		<input v-ref:myinput type="text" class="bo-input bo-input-sm counter-input" v-model="val"  readonly>
+		<button class="counter-btn sub" :class="[style.btn, style.btn2, style.rbtn]" @click="plus">
 			<i class="icon iconfont icon-add1"></i>
 		</button>
 		<div class="bo-clear"></div>
@@ -29,43 +29,47 @@ export default {
 		},
 		type: {
 			default:''
-		},
-		readonly: {
-			default: false
-		} 
+		}
 	},
 	created: function(){
 		if(this.val < this.min){
 			this.val = this.min;
-			this.oldVal = this.val;
+			 
 		} else if(this.val > this.max){
 			this.val = this.max;
-			this.oldVal = this.max;
+			 
 		}
+		this.oldVal = this.val;
 	 	this.setbtn();
 
 
 		if(this.type == 2){
-			this.style.btn = []
-		}
-	},
-	ready: function(){
-		if(this.readonly){
-			//this.$refs.myinput.readonly
+			this.style.btn = '';
+			this.style.btn2 = '';
 		}
 	},
 	methods: {
 		setbtn: function(){
 			this.style.lbtn = '';
 			this.style.rbtn = '';
-			if(this.val == this.min){
+			if(this.val == this.min || !this.enable.lbtn){
 				this.style.lbtn= 'counter-btn-disable'
 			}
-			if(this.val == this.max){
+			if(this.val == this.max || !this.enable.rbtn){
 				this.style.rbtn= 'counter-btn-disable';
 			}
 		},
+		setLbtn: function(state){
+			this.enable.lbtn = state;
+			this.setbtn();
+		},
+		setRbtn: function(state){
+			this.enable.rbtn = state;
+			this.setbtn();
+		},
 		plus: function(){
+			if(!this.enable.rbtn) return;
+
 			if(this.max != '' && this.val < parseInt(this.max)){
 				this.oldVal = this.val;
 				this.val++;
@@ -77,6 +81,7 @@ export default {
 			this.dispatch('counter-change');
 		},
 		sub: function(){
+			if(!this.enable.lbtn) return;
 			if(this.val > this.min){
 				this.oldVal = this.val;
 				this.val--;	
@@ -84,13 +89,9 @@ export default {
 			this.setbtn();
 			this.dispatch('counter-change');
 		},
-		change: function(){
-			this.dispatch('counter-change');
-			this.setbtn();
-		},
 		dispatch: function(type){
 			switch(type){
-				case 'counter-change':{
+				case 'counter-change': {
 					this.$dispatch('counter-change', this);
 				}
 			}
@@ -110,7 +111,11 @@ export default {
 				lbtn: '',
 				rbtn: ''
 			},
-			oldVal: 0
+			oldVal: 0,
+			enable: {
+				lbtn: true,
+				rbtn: true
+			}
 		}
 	}
 }
