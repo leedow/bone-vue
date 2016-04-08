@@ -12,18 +12,18 @@
 		<layout-box p='1111'>
 			<form-group type='blank'>		
 				<form-counter v-ref:mycounter max=5 min=2 val=3></form-counter>
-				<btn type="primary" size="sm" name="回滚" @btn-click="rollback"></btn>
-				<btn type="primary" size="sm" name="禁止＋" @btn-click="disabler"></btn>
-				<btn type="primary" size="sm" name="禁止－" @btn-click="disablel"></btn>
+				<btn type="primary" size="sm" name="回滚" @btn-click="rollback(0)"></btn>
+				<btn type="primary" size="sm" name="禁止＋" @btn-click="disabler(0)"></btn>
+				<btn type="primary" size="sm" name="禁止－" @btn-click="disablel(0)"></btn>
 			</form-group>
 			<div class="bo-clear"></div>
 		</layout-box>	
 		<layout-box p='1111'>
 			<form-group type='blank'>		
-				<form-counter v-ref:mycounter type="2" max=5 min=2 val=3></form-counter>
-				<btn type="primary" size="sm" name="回滚" @btn-click="rollback"></btn>
-				<btn type="primary" size="sm" name="禁止＋" @btn-click="disabler"></btn>
-				<btn type="primary" size="sm" name="禁止－" @btn-click="disablel"></btn>
+				<form-counter v-ref:mycountera type="2" max=5 min=2 val=3></form-counter>
+				<btn type="primary" size="sm" name="回滚" @btn-click="rollback(1)"></btn>
+				<btn type="primary" size="sm" name="禁止＋" @btn-click="disabler(1)"></btn>
+				<btn type="primary" size="sm" name="禁止－" @btn-click="disablel(1)"></btn>
 			</form-group>
 			<div class="bo-clear"></div>
 		</layout-box>	 
@@ -72,15 +72,20 @@ export default {
 			}
 			
 		},
-		rollback: function(){
-			this.$refs.mycounter.rollback();
+		rollback: function(val){
+			this.counter[val].rollback();
 		},
-		disablel: function(){
-			this.$refs.mycounter.setLbtn(false);
+		disablel: function(val){
+			this.counter[val].setLbtn(false);
 		},
-		disabler: function(){
-			this.$refs.mycounter.setRbtn(false);
+		disabler: function(val){
+ 
+			this.counter[val].setRbtn(false);
 		}
+	},
+	ready: function(){
+		this.counter[0] = this.$refs.mycounter;
+		this.counter[1] = this.$refs.mycountera;
 	},
 	events: {
 		'input-wrong': function(){
@@ -96,7 +101,8 @@ export default {
 			  },{
 			  		val: '1',
 			  		text: '22222'
-			  }]
+			  }],
+			  counter: []
 		}
 	}
 }

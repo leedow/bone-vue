@@ -33,10 +33,11 @@ export default {
 
 	},
 	methods: {
-		buyEvent: function(val){
+		buyEvent: function(counter){
 			var pra = {
-				val: val,
-				id: this.data.id
+				counter: counter,
+				id: this.data.id,
+				data: this.data
 			}
 			this.$dispatch('product-buy', pra);
 		}

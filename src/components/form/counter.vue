@@ -98,6 +98,7 @@ export default {
 		},
 		rollback: function(){
 			this.val = this.oldVal;
+			this.setbtn();
 		}
 	},
 	events: {
