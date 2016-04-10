@@ -94,6 +94,9 @@ export default {
 			coerce (val){
 				return val?'bo-form-item-noline':'';
 			}
+		},
+		val:{
+			default:''
 		}
 	},
 	methods: {
@@ -141,7 +144,6 @@ export default {
 	},
 	data () {
 		return {
-			val: '',
 			notice: {
 				flag: false,
 				text: ''
