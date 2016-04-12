@@ -1,5 +1,5 @@
 <template>
-	<a class="bo-tab-item{{current}}{{size}}">
+	<a class="bo-tab-item{{current}}{{size}}" :href="href">
 		<slot></slot>
 	</a>
 </template>
@@ -16,6 +16,9 @@ export default {
 			coerce (val){
 				return val?' bo-col-'+val:'';
 			}
+		},
+		href: {
+			default: ""
 		}
 	},
 	data () {

@@ -3,6 +3,7 @@
 		<div class="bo-header">
 			<slot></slot>
 		</div>
+		<slot name="addon"></slot>
 	</header>
 </template>
 

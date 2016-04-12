@@ -23,7 +23,7 @@
 				<form-code 	name="code"
 							label="验证码"
 							place-holder="输入验证码"></form-code>
-				<form-select :data="select" place-holder="请选择" name="se" label="下 拉" required=true type="password" size="lg"></form-select>
+				<form-select id="fuck" v-ref:op :data="select"  name="se" label="下 拉" required=true type="password" size="lg"></form-select>
 			</form-group>
 		</layout-box>	 		  	
 		<grid-row p='1111'>
@@ -60,6 +60,13 @@ export default {
 		GridCol,
 		FormCode
 	},
+	ready: function(){
+		var _this = this;
+		var timer = setTimeout(function(){
+			//_this.$refs.op.setSelectedById(2);
+		}, 2000);
+		 
+	},
 	methods:{
 		submit: function(){
 		 	//alert('submit')
@@ -83,11 +90,11 @@ export default {
 		return {
 			  select: [{
 			  		val: '1',
-			  		text: '1111',
-			  		selected: 'selected'
+			  		text: '1111' 
 			  },{
-			  		val: '1',
-			  		text: '22222'
+			  		val: '2',
+			  		text: '22222',
+			  		selected: 'selected' 
 			  }]
 		}
 	}

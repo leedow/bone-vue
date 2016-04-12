@@ -2,9 +2,9 @@
 	 <div :class="[size.divsize]">
 	 	<label class="bo-label" v-if="label.text" for="">{{label.text}}</label>
 	 	<div :class="[icon.css, state]">
-	 		<select :class="[size.inputsize, formControl, label.css]" type="{{type}}" name="{{name}}" v-model="val" placeholder="{{placeHolder}}" @focus="focus" @blur="blur">
+	 		<select :id="id" :class="[size.inputsize, formControl, label.css]" type="{{type}}" name="{{name}}" v-model="val" placeholder="{{placeHolder}}" @focus="focus" @blur="blur" v-el:op>
 	 			<option v-if="placeHolder" value="">{{placeHolder}}</option>
-				<option v-for="item in data" value="{{item.val}}">{{item.text}}</option>
+				<option v-for="item in data" value="{{item.val}}" :selected="item.selected">{{item.text}}</option>
 	 		</select>
 	 		<i v-if="icon.text" class="icon iconfont" :class="[icon.text]"></i>
 	 		<div v-if="notice.flag" class="bo-tip bo-tip-top">{{notice.text}}</div>
@@ -21,6 +21,9 @@ import Format from '../../addon/format'
  */
 export default {
 	props: {
+		id: {
+			default: ''
+		},
 		data: {
 			default: []
 		},
@@ -128,6 +131,35 @@ export default {
 				this.notice.flag = false;
 			}
 			this.verify();
+		},
+		setSelected: function(aim){
+ 	 		 
+ 	 		var len = this.$els.op.options.length;
+ 	 		 
+			for(var key=0; key<len; key++){		
+			 	 
+				this.$els.op.options[key].removeAttribute('selected');
+			 
+				if(this.$els.op.options[key].value == aim){
+					this.$els.op.options[key].setAttribute('selected', true);
+				}				
+			}
+			 
+		},
+		setSelectedById: function(aim){
+			var op = document.getElementById(this.id);
+ 	 		 
+			for(var key=0; key<op.options.length; key++){		
+			 	 
+				op.options[key].removeAttribute('selected');
+			 
+				if(op.options[key].value == aim){
+					op.options[key].setAttribute('selected', true);
+				}				
+			}
+		},
+		setVal: function(val){
+			this.val = val;
 		}
 	},
 	events: {

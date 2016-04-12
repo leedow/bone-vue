@@ -7,8 +7,14 @@
 		<header-dock align='right'>
 			<a href="">Github</a>
 		</header-dock>
+		<layout-box slot="addon">
+			<tabs-horizon>
+				<tabs-item-horizon current=true size=3>Item1</tabs-item-horizon>
+				<tabs-item-horizon size=3>Item2</tabs-item-horizon>
+			</tabs-horizon>
+		</layout-box>
 	</header-layout>
-	<layout-main>
+	<layout-main addon=true>
 		<layout-box>
 			<tabs-horizon>
 				<tabs-item-horizon current=true size=3>Item1</tabs-item-horizon>

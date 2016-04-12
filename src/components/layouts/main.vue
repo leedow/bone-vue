@@ -1,5 +1,5 @@
 <template>
-	<section class="bo-layout-main bo-layout-full{{class}}">
+	<section class="bo-layout-main bo-layout-full{{addon}}{{class}}">
 		<slot></slot>
 	</section>
 </template>
@@ -10,6 +10,11 @@ export default {
 		class: {
 			coerce (val){
 				return val?' '+val:'';
+			}
+		},
+		addon: {
+			coerce (val){
+				return val?' bo-layout-main-addon':'';
 			}
 		}		
 	},
