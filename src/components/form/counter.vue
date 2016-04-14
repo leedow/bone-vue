@@ -73,21 +73,24 @@ export default {
 			if(this.max != '' && this.val < parseInt(this.max)){
 				this.oldVal = this.val;
 				this.val++;
+				this.dispatch('counter-change');
 			} else if(this.max == ''){
 				this.oldVal = this.val;
 				this.val++;
+				this.dispatch('counter-change');
 			}
 			this.setbtn();
-			this.dispatch('counter-change');
+			
 		},
 		sub: function(){
 			if(!this.enable.lbtn) return;
 			if(this.val > this.min){
 				this.oldVal = this.val;
 				this.val--;	
+				this.dispatch('counter-change');
 			}
 			this.setbtn();
-			this.dispatch('counter-change');
+			 
 		},
 		dispatch: function(type){
 			switch(type){

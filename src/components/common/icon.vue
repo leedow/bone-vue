@@ -6,7 +6,7 @@
 export default {
 	props: {
 		type: {
-			coerce (val) {//
+			coerce (val) {
 				return val?val:'';
 			}
 		}

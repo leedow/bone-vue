@@ -11,7 +11,7 @@
 			￥<span>{{data.price}}</span> /{{data.unit}} 
 		</div>
 		<div class="mount">
-			<form-counter type='2' :val="data.amount" @counter-change="buyEvent"></form-counter>
+			<form-counter type='2' :val="data.amount" :max="max" @counter-change="buyEvent"></form-counter>
 		</div>		
 	</div>
 	<div class="bo-clear"></div>
@@ -27,6 +27,9 @@ export default {
 	props:{
 		data: {
 			default: {}
+		},
+		max: {
+			default: 9999
 		} 
 	},
 	events: {

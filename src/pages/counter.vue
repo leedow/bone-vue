@@ -26,7 +26,15 @@
 				<btn type="primary" size="sm" name="禁止－" @btn-click="disablel(1)"></btn>
 			</form-group>
 			<div class="bo-clear"></div>
-		</layout-box>	 
+		</layout-box>	
+		<layout-box p='1111'>
+			<form-group type='blank'>		
+				<form-stars val=2></form-stars>
+			 
+			 
+			</form-group>
+			<div class="bo-clear"></div>
+		</layout-box> 
 	</layout-main>
 </template>
 
@@ -36,7 +44,7 @@ import {LayoutBox, LayoutMain, GridRow, GridCol} from '../components/layouts'
 import {TabsHorizon, TabsItemHorizon, TabsVertical, TabsItemVertical} from '../components/tabs'
 import {Btn} from '../components/buttons'
 import {Icon} from '../components/common'
-import {FormGroup, FormInput, FormSelect, FormCode, FormCounter} from '../components/form'
+import {FormGroup, FormInput, FormSelect, FormCode, FormCounter, FormStars} from '../components/form'
 
 
 export default {
@@ -57,7 +65,8 @@ export default {
 		GridRow,
 		GridCol,
 		FormCode,
-		FormCounter
+		FormCounter,
+		FormStars
 	},
 	methods:{
 		submit: function(){
