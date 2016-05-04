@@ -1,5 +1,5 @@
 <template>
-	<section class="bo-layout-main bo-layout-full{{addon}}{{class}}">
+	<section class="bo-layout-main bo-layout-full{{addon}}{{class}}{{top}}" :style="css">
 		<slot></slot>
 	</section>
 </template>
@@ -16,6 +16,18 @@ export default {
 			coerce (val){
 				return val?' bo-layout-main-addon':'';
 			}
+		},
+		top: {
+			coerce (val){
+				if(val == 'none'){
+					return ' bo-layout-main-top0';
+				}else {
+					return '';
+				}
+			}
+		},
+		css: {
+			default: {}
 		}		
 	},
 	data () {

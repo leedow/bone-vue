@@ -11,6 +11,14 @@ var Format = {
 		phone: {
 			reg: /^\d{11}$/,
 			msg: '手机格式错误'
+		},
+		float: {
+			reg: /^\d+(.\d+)?$/,
+			msg: '必须为整数或小数'
+		},
+		int: {
+			reg: /^\d+$/,
+			msg: '必须为整数'
 		}
 	},
 	do: function(required, format, value){

@@ -1,30 +1,45 @@
 <template>
 	<ul class="bo-list">
 		<slot></slot>
+		<p class="bo-list-loading" v-if="loadingShow">{{loadingMsg}}</p>
+		<p class="bo-list-end" v-if="endShow">{{endMsg}}</p>
 	</ul>
 </template>
 
 <script>
+import Scroll from "../../addon/scroll"
+
 export default {
 	props:{
 		pageSize: {
 			default: 0
+		},
+		endMsg: {
+			default: '没有更多数据了'
+		},
+		loadingMsg: {
+			default: '努力加载中'
 		}
 	},
 	ready: function(){
 		var _this = this;
-		window.onscroll = function(){
-			var body = document.body;
 
-			var h = document.body.scrollHeight;
-			var s = document.documentElement.scrollTop + document.body.scrollTop;
-			var ch = document.body.clientHeight;
-			 
-			if(s>= h-ch){
-				console.log('loading')
-				 _this.$dispatch('list-scroll', '');
+		Scroll.add(function(e){
+			if(_this.endShow){
+				return;
 			}
-		}
+			if(e.scrollHeight >= e.bodyHeight - e.clientHeight){
+			 
+
+				 _this.$dispatch('list-scroll', {
+				 	pageSize: _this.pageSize,
+				 	page: _this.getPages(),
+				 	total: _this.getTotal()
+				 });
+			}
+		});
+
+		 
 	},
 	methods: {
 		setData: function(data, key){//data=[] , key=String
@@ -72,11 +87,31 @@ export default {
 		}, 
 		getTotal: function(){
 			return this.data.length;
+		},
+		setLoading: function(msg){
+			if(msg){
+				this.loadingMsg = msg;
+			}
+			this.endShow = false;
+			this.loadingShow = true;
+		},
+		setEnd: function(msg){
+			if(msg){
+				this.endMsg = msg;
+			}
+			this.loadingShow = false;
+			this.endShow = true;
+		},
+		reSet: function(){
+			this.loadingShow = false;
+			this.endShow = false;
 		}
 	},
 	data () {
 		return {
-			 data: []
+			 data: [],
+			 loadingShow: false,
+			 endShow: false
 		}
 	}
 }

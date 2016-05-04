@@ -21,17 +21,28 @@
 					<a v-link="{ path: '/form' }">表 单</a>
 				</tabs-item-vertical>
 				<tabs-item-vertical arrow=true>
-					<a v-link="{ path: '/list' }">下拉刷新列表</a>
+					<a v-link="{ path: '/counter' }">增强输入组件</a>
 				</tabs-item-vertical>
 				<tabs-item-vertical arrow=true>
-					<a v-link="{ path: '/counter' }">数字选择</a>
+					<a v-link="{ path: '/list' }">下拉刷新列表</a>
 				</tabs-item-vertical>
+				 
 				<tabs-item-vertical arrow=true>
 					<a v-link="{ path: '/menu' }">侧边菜单</a>
 				</tabs-item-vertical>
 				<tabs-item-vertical arrow=true>
 					<a v-link="{ path: '/shopping' }">购物车Dock</a>
 				</tabs-item-vertical>
+				<tabs-item-vertical arrow=true>
+					<a v-link="{ path: '/productlist2' }">商品列表2</a>
+				</tabs-item-vertical>
+				<tabs-item-vertical arrow=true>
+					<a v-link="{ path: '/scrollheader' }">滚动变色的header</a>
+				</tabs-item-vertical>
+				<tabs-item-vertical arrow=true>
+					<linker href="/global.html" record=true>返回历史页面</linker>
+				</tabs-item-vertical>
+
 			</tabs-vertical>
 		</layout-box>			
 	</layout-main>
@@ -42,7 +53,7 @@
 import {HeaderLayout, HeaderDock} from '../components/header'
 import {LayoutBox, LayoutMain} from '../components/layouts'
 import {TabsHorizon, TabsItemHorizon, TabsVertical, TabsItemVertical} from '../components/tabs'
-import {Icon} from '../components/common'
+import {Icon, Linker} from '../components/common'
 export default {
 	components:{
 		HeaderLayout, 
@@ -53,7 +64,8 @@ export default {
 		TabsItemHorizon,
 		TabsVertical,
 		TabsItemVertical,
-		Icon
+		Icon,
+		Linker
 	},
 	data () {
 		return {

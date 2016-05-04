@@ -2,7 +2,7 @@
 	 <div :class="[size.divsize]">
 	 	<label class="bo-label" v-if="label.text" for="">{{label.text}}</label>
 	 	<div :class="[icon.css, state]">
-	 		<select :id="id" :class="[size.inputsize, formControl, label.css]" type="{{type}}" name="{{name}}" v-model="val" placeholder="{{placeHolder}}" @focus="focus" @blur="blur" v-el:op>
+	 		<select :id="id" :class="[size.inputsize, formControl, label.css]" type="{{type}}" name="{{name}}" v-model="val" placeholder="{{placeHolder}}" @focus="focus" @blur="blur" @change="change" v-el:op>
 	 			<option v-if="placeHolder" value="">{{placeHolder}}</option>
 				<option v-for="item in data" value="{{item.val}}" :selected="item.selected">{{item.text}}</option>
 	 		</select>
@@ -131,6 +131,9 @@ export default {
 				this.notice.flag = false;
 			}
 			this.verify();
+		},
+		change: function(){
+			this.$dispatch('select-change', this);
 		},
 		setSelected: function(aim){
  	 		 

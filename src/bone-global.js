@@ -3,10 +3,11 @@ import {HeaderLayout, HeaderDock} from './components/header'
 import {LayoutBox, LayoutMain,LayoutSideMenu, GridRow, GridCol} from './components/layouts'
 import {TabsHorizon, TabsItemHorizon, TabsVertical, TabsItemVertical, TabsSide, TabsItemSide} from './components/tabs'
 import {Btn} from './components/buttons'
-import {Icon} from './components/common'
-import {FormGroup, FormInput, FormSelect, FormCode, FormCounter} from './components/form'
-import {Product, ShoppingDock} from './jishibao'
+import {Icon, Linker} from './components/common'
+import {FormGroup, FormInput, FormSelect, FormCode, FormCounter, FormStars, FormCheck, FormUpload} from './components/form'
+import {Product,Product2, ShoppingDock} from './jishibao'
 import {List, ListItem} from './components/list'
+import {MenuSquare, MenuIcon} from './components/menu'
 
 window.Vue = Vue;
 
@@ -31,10 +32,17 @@ window.Bone = {
 		FormSelect:FormSelect,
 		FormCode:FormCode,
 		FormCounter:FormCounter,
+		FormStars:FormStars,
+		FormCheck:FormCheck,
+		FormUpload:FormUpload,
 		Product:Product,
+		Product2:Product2,
 		ShoppingDock:ShoppingDock,
 		List:List,
-		ListItem:ListItem
+		ListItem:ListItem,
+		MenuSquare:MenuSquare,
+		Linker: Linker,
+		MenuIcon: MenuIcon
 
 };
 

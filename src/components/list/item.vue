@@ -1,5 +1,5 @@
 <template>
-	<li class="list-item">
+	<li class="list-item-{{type}}">
 		<slot :data="data"></slot>
 	</li>
 </template>
@@ -9,6 +9,9 @@ export default {
 	props:{
 		data: {
 			default: 3
+		},
+		type: {
+			default: ''
 		}
 	},
 	data () {

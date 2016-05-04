@@ -11,6 +11,8 @@ import list from './pages/list.vue'
 import counter from './pages/counter.vue'
 import menu from './pages/menu.vue'
 import shopping from './pages/shopping.vue'
+import scrollheader from './pages/scrollheader.vue'
+import productlist2 from './pages/productlist2.vue'
 
 Vue.use(VueRouter);
 var router = new VueRouter()
@@ -39,6 +41,12 @@ router.map({
     },
     '/shopping': {
         component: shopping
+    },
+    'productlist2':{
+        component: productlist2
+    },
+    '/scrollheader': {
+        component: scrollheader
     }
 })
 

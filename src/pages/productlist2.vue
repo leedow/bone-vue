@@ -3,33 +3,31 @@
 		<header-dock align='left'>
 			<a v-link="{ path: '/' }"><Icon type="back"></Icon></a>
 		</header-dock>
-		Tabs side
+		List
 		<header-dock align='right'>
 			<a href="">Github</a>
 		</header-dock>
 	</header-layout>
-	  
 	<layout-main>
+		<layout-box>
 		<list v-ref:mylist @list-scroll="loading">
-			<list-item v-for="item in data" >
-				<layout-box p="1111">
-					<product @product-intro="test"></product>	
-				</layout-box>
+			<list-item type="2" v-for="item in data" >
+				<product2></product2>
 			</list-item>		 
 		</list> 	
+		</layout-box>
 	</layout-main>
-	<shopping-dock></shopping-dock>
 </template>
 
 <script>
 import {HeaderLayout, HeaderDock} from '../components/header'
 import {LayoutBox, LayoutMain, LayoutSideMenu, GridRow, GridCol} from '../components/layouts'
-import {TabsHorizon, TabsItemHorizon, TabsVertical, TabsItemVertical, TabsSide, TabsItemSide} from '../components/tabs'
+import {TabsHorizon, TabsItemHorizon, TabsVertical, TabsItemVertical} from '../components/tabs'
 import {Btn} from '../components/buttons'
 import {Icon} from '../components/common'
-import {FormGroup, FormInput} from '../components/form'
+import {FormGroup, FormInput, FormCounter} from '../components/form'
 import {List, ListItem} from '../components/list'
-import {Product, ShoppingDock} from '../jishibao'
+import {Product2} from '../jishibao'
 
 
 export default {
@@ -43,16 +41,14 @@ export default {
 		TabsItemHorizon,
 		TabsVertical,
 		TabsItemVertical,
-		TabsSide,
-		TabsItemSide,
 		Btn,
 		Icon,
 		FormGroup,
 		FormInput,
 		List,
 		ListItem,
-		Product,
-		ShoppingDock
+		Product2,
+		FormCounter
 	},
 	ready:function(){
 		this.loading();
@@ -74,9 +70,6 @@ export default {
 					_this.data = mylist.getData();
 				}
 			})
-		},
-		test: function(){
-			alert('123')
 		}
 	},
 	events: {

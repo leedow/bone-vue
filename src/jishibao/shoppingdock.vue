@@ -1,7 +1,7 @@
 <template>
 	<div class="shp-dock">
 		<div id="total">
-			总计 <span>{{total}}</span> 元
+			总计 <span>{{total}}</span> 件
 		</div>
 		<div id="buy">
 			<btn type="warm" size="sm" :name="name" icon="cart" @click="goEvent"></btn>
@@ -23,7 +23,7 @@ export default {
 		 	default: 0
 		 },
 		 name: {
-		 	default: '去结算'
+		 	default: '去下单'
 		 }
 	},
 	methods: {

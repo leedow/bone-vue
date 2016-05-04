@@ -10,21 +10,16 @@
   </head>
   <body>
     <div id="app">
-      <header-layout title='Bone Vue'>
-        <header-dock align='left'>
-          <a v-link="{ path: '/' }"><Icon type="back"></Icon></a>
-        </header-dock>
-        Form
-        <header-dock align='right'>
-          <a href="">Github</a>
-        </header-dock>
-      </header-layout>
+        <linker href="back">linker</linker>
     </div>
     <script src="dist/jquery-2.1.1.min.js"></script>
     <script src="dist/global.js"></script>
     <script>
-        Vue.component('header-layout', Bone.Header.HeaderLayout);
+        //Vue.component('header-layout', Bone.Header.HeaderLayout);
         new Vue({
+          components: {
+            Linker: Bone.Linker
+          },
           el: '#app'
         })
     </script>

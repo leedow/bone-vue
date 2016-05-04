@@ -1,5 +1,5 @@
 <template>
- 	<div class="bo-stars">					
+ 	<div class="bo-stars{{size}}">					
 		<button v-for="item in stars" class="star" :class="[item.style]" :data-val="item.val" @click="score(item.val)">
 			<i class="icon iconfont icon-favorfill"></i>
 		</button>
@@ -18,6 +18,14 @@ export default {
 		},
 		max: {
 			default: 5
+		},
+		size: {
+			coerce (val){
+				return val?'-'+val:'';
+			}
+		},
+		disable: {
+			default: false
 		}
 	},
 	created: function(){
@@ -25,6 +33,7 @@ export default {
 	},
 	methods: {
 	 	score: function(val){ 
+	 		if(this.disable) return;
 	 		this.val = val;
 	 		this.update();
 	 		this.$dispatch('stars-change', this);

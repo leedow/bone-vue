@@ -8,7 +8,7 @@
 			<a href="">Github</a>
 		</header-dock>
 	</header-layout>
-	<layout-side-menu>
+	<layout-side-menu slide=44 top=140>
 		<tabs-side>
 			<tabs-item-side disable=true tag="1111">
 					星期一  
@@ -18,26 +18,44 @@
 			</tabs-item-side>
 		</tabs-side>
 	</layout-side-menu>
-	<layout-main class="bo-side-p">
+	<layout-sidebar>
+			FSDFSDFSFSFDSSDF
+	</layout-sidebar>
+	<layout-main>
+		<grid-row p="1010">
+			<grid-col size=4>
+				<menu-square type="home" title="Title" color="#000" href="http://www.baidu.com"></menu-square>
+			</grid-col>
+			<grid-col size=4>
+				<menu-square type="home" title="Title"></menu-square>
+			</grid-col>
+			<grid-col size=4>
+				<menu-square type="home" title="Title"></menu-square>
+			</grid-col>
+			<div class="bo-clear"></div>
+		</grid-row>
+		<div class="bo-side-p">
 		<list v-ref:mylist @list-scroll="loading">
 			<list-item v-for="item in data" >
 				<layout-box p="1111">
 					<product :data="pro"></product>	
 				</layout-box>
 			</list-item>		 
-		</list> 	
+		</list>
+		</div> 	
 	</layout-main>
 </template>
 
 <script>
 import {HeaderLayout, HeaderDock} from '../components/header'
-import {LayoutBox, LayoutMain, LayoutSideMenu, GridRow, GridCol} from '../components/layouts'
+import {LayoutBox, LayoutMain, LayoutSidebar, LayoutSideMenu, GridRow, GridCol} from '../components/layouts'
 import {TabsHorizon, TabsItemHorizon, TabsVertical, TabsItemVertical, TabsSide, TabsItemSide} from '../components/tabs'
 import {Btn} from '../components/buttons'
 import {Icon} from '../components/common'
 import {FormGroup, FormInput} from '../components/form'
 import {List, ListItem} from '../components/list'
 import {Product} from '../jishibao'
+import {MenuSquare} from '../components/menu'
 
 
 export default {
@@ -47,6 +65,7 @@ export default {
 		LayoutMain,
 		LayoutBox,
 		LayoutSideMenu,
+		LayoutSidebar,
 		TabsHorizon,
 		TabsItemHorizon,
 		TabsVertical,
@@ -59,7 +78,10 @@ export default {
 		FormInput,
 		List,
 		ListItem,
-		Product
+		Product,
+		MenuSquare,
+		GridRow,
+		GridCol
 	},
 	ready:function(){
 		this.loading();

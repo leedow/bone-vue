@@ -4,6 +4,8 @@ import FormSelect from './select.vue'
 import FormCode from './code.vue'
 import FormCounter from './counter.vue'
 import FormStars from './stars.vue'
+import FormCheck from './check.vue'
+import FormUpload from './upload.vue'
 
 export {
 	FormGroup,
@@ -11,5 +13,7 @@ export {
 	FormSelect,
 	FormCode,
 	FormCounter,
-	FormStars
+	FormStars,
+	FormCheck,
+	FormUpload
 }

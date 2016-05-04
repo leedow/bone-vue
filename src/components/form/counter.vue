@@ -3,7 +3,7 @@
 		<button class="counter-btn plus" :class="[style.btn, style.btn2, style.lbtn]" @click="sub">
 			<i class="icon iconfont icon-move"></i>
 		</button>
-		<input v-ref:myinput type="text" class="bo-input bo-input-sm counter-input" v-model="val"  readonly>
+		<input v-ref:myinput type="text" class="bo-input counter-input" :class="[style.input]" v-model="val"  readonly>
 		<button class="counter-btn sub" :class="[style.btn, style.btn2, style.rbtn]" @click="plus">
 			<i class="icon iconfont icon-add1"></i>
 		</button>
@@ -29,6 +29,9 @@ export default {
 		},
 		type: {
 			default:''
+		},
+		size: {
+			default: 'sm'
 		}
 	},
 	created: function(){
@@ -42,11 +45,15 @@ export default {
 		this.oldVal = this.val;
 	 	this.setbtn();
 
+	 	this.style.btn2 = 'bo-btn-' + this.size;
+	 	this.style.input = 'bo-input-' + this.size;
 
 		if(this.type == 2){
 			this.style.btn = '';
 			this.style.btn2 = '';
 		}
+
+
 	},
 	methods: {
 		setbtn: function(){
@@ -113,7 +120,8 @@ export default {
 				btn: 'bo-btn',
 				btn2: 'bo-btn-sm',
 				lbtn: '',
-				rbtn: ''
+				rbtn: '',
+				input: 'bo-input-sm'
 			},
 			oldVal: 0,
 			enable: {

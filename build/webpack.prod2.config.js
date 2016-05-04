@@ -7,8 +7,8 @@ config.entry = {
 }
 
 config.output = {
-    path: '../Order/js',
-    publicPath: 'Order/js',
+    path: '../Graduation/js',
+    publicPath: 'Graduation/js',
     filename: '[name].js'
 },
 
