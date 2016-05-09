@@ -42,6 +42,9 @@ export default {
 		 
 	},
 	methods: {
+		clean: function(){
+			this.data = [];
+		},
 		setData: function(data, key){//data=[] , key=String
 			this.data = [];
 			for(var i =0; i<data.length; i++){
