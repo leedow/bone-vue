@@ -18,6 +18,9 @@ export default {
 			coerce (val) {//sm|lg
 				return val?'bo-form-'+val:'bo-form';
 			}
+		},
+		lock: {//是否在提交中标识，true表示表单正在处理，防止重复提交
+			default: false
 		} 
 	},
 	methods: {
@@ -48,8 +51,22 @@ export default {
 		}
 	},
 	events: {
+		'submit-click': function(){
+			this.verify();
+			if(this.pass && !this.lock){
+				this.$dispatch('form-submit', this.data);
+			}
+		},
 		'form-verify': function(){
 			this.verify();
+		},
+		'form-lock': function(){
+			this.lock = true;
+			return true;
+		},
+		'form-free': function(){
+			this.lock = false;
+			return true;
 		},
 		'input-pass': function(msg){
 			this.addData(msg.name, msg.val);

@@ -1,5 +1,5 @@
 <template>
-	<button class="bo-check" :class="[style.checked, style.addon, style.tip]" @click="clickEvent">
+	<button class="bo-check" :class="[style.checked, style.addon, style.tip, addonClass]" @click="clickEvent">
 		<i class="icon iconfont" :class="[style.icon]"></i>				
 	</button>	
 </template>
@@ -26,6 +26,9 @@ export default {
 				return val?'icon-'+val:'';
 			}
 		},
+		addonClass: {
+			default: '';
+		},
 		flag	: {
 			default: false
 		} 
@@ -35,6 +38,9 @@ export default {
 		this.fresh();
 	},
 	methods: {
+		setAddonClass: function(css){
+			this.addonClass = css;
+		},
 		setChecked: function(state){
 			this.checked = state;
 			this.fresh();
