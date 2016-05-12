@@ -2,11 +2,9 @@
 	<button class="bo-check" :class="[style.checked, style.addon, style.tip, addonClass]" @click="clickEvent">
 		<i class="icon iconfont" :class="[style.icon]"></i>				
 	</button>	
+	 
 </template>
-
 <script>
-
-
 /*
  * Dispatch events:check-click
  *  
@@ -27,9 +25,9 @@ export default {
 			}
 		},
 		addonClass: {
-			default: '';
+			default: ''
 		},
-		flag	: {
+		flag: {
 			default: false
 		} 
 	},
@@ -46,6 +44,7 @@ export default {
 			this.fresh();
 		},
 		clickEvent: function(){
+			 
 			this.checked = !this.checked;
 			this.fresh();
 			this.$dispatch('check-click', this);

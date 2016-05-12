@@ -163,6 +163,14 @@ export default {
 		},
 		setVal: function(val){
 			this.val = val;
+		},
+		getText: function(){
+			var res;
+			for(var i=0; i<this.data.length; i++){
+				if(data[i].val == this.val)
+					res = data[i].text;
+			}
+			return res;
 		}
 	},
 	events: {
