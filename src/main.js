@@ -13,6 +13,7 @@ import menu from './pages/menu.vue'
 import shopping from './pages/shopping.vue'
 import scrollheader from './pages/scrollheader.vue'
 import productlist2 from './pages/productlist2.vue'
+import swipe from './pages/swipe.vue'
 
 Vue.use(VueRouter);
 var router = new VueRouter()
@@ -47,6 +48,9 @@ router.map({
     },
     '/scrollheader': {
         component: scrollheader
+    },
+    '/swipe':{
+        component: swipe
     }
 })
 
