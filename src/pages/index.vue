@@ -45,6 +45,10 @@
 				<tabs-item-vertical arrow=true>
 					<a v-link="{ path: '/swipe' }">走马灯</a>
 				</tabs-item-vertical>
+
+				<tabs-item-vertical arrow=true>
+					<a v-link="{ path: '/dialog' }">对话框</a>
+				</tabs-item-vertical>
 			</tabs-vertical>
 		</layout-box>			
 	</layout-main>

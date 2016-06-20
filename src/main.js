@@ -14,6 +14,7 @@ import shopping from './pages/shopping.vue'
 import scrollheader from './pages/scrollheader.vue'
 import productlist2 from './pages/productlist2.vue'
 import swipe from './pages/swipe.vue'
+import dialog from './pages/dialog.vue'
 
 Vue.use(VueRouter);
 var router = new VueRouter()
@@ -51,6 +52,9 @@ router.map({
     },
     '/swipe':{
         component: swipe
+    },
+    '/dialog':{
+        component: dialog
     }
 })
 

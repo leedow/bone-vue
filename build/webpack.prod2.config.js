@@ -3,12 +3,12 @@ var config = require('./webpack.base.config')
 
 
 config.entry = {
-     bone: './src/bone-global.js'
+     bone: './src/bone-order.js'
 }
 
 config.output = {
-    path: '../Graduation/js',
-    publicPath: 'Graduation/js',
+    path: '../Order/js',
+    publicPath: 'Order/js',
     filename: '[name].js'
 },
 

@@ -6,6 +6,7 @@ import FormCounter from './counter.vue'
 import FormStars from './stars.vue'
 import FormCheck from './check.vue'
 import FormUpload from './upload.vue'
+import FormTime from './time.vue'
 
 export {
 	FormGroup,
@@ -15,5 +16,6 @@ export {
 	FormCounter,
 	FormStars,
 	FormCheck,
-	FormUpload
+	FormUpload,
+	FormTime
 }

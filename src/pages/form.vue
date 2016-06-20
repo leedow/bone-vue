@@ -21,7 +21,7 @@
 				<form-code 	name="code"
 							label="验证码"
 							place-holder="输入验证码"></form-code>
-				<form-input 	name="number"
+				<form-input name="number"
 							label="整 数"
 							place-holder="输入整数" format="int"></form-input>
 				<form-input 	name="number"
@@ -39,6 +39,12 @@
 				<div id="picpreview"></div>
 			</form-group>
 		</layout-box>
+
+		<layout-box m="1000">
+			<form-group type='blank'>	
+				<form-time name="time" label="时 间" type="text"></form-time>
+			</form-group>
+		</layout-box>
 		 	  	
 		<grid-row p='1111'>
 			<Btn type="primary" block=true @btn-click="submit" name="提 交"></Btn>
@@ -53,7 +59,8 @@ import {LayoutBox, LayoutMain, GridRow, GridCol} from '../components/layouts'
 import {TabsHorizon, TabsItemHorizon, TabsVertical, TabsItemVertical} from '../components/tabs'
 import {Btn} from '../components/buttons'
 import {Icon} from '../components/common'
-import {FormGroup, FormInput, FormSelect, FormCode, FormStars, FormCheck, FormUpload} from '../components/form'
+import {FormGroup, FormInput, FormSelect, FormCode, FormStars, FormCheck, FormUpload
+		,FormTime} from '../components/form'
 
 
 export default {
@@ -76,7 +83,8 @@ export default {
 		FormCode,
 		FormStars,
 		FormCheck,
-		FormUpload
+		FormUpload,
+		FormTime
 	},
 	ready: function(){
 		var _this = this;
