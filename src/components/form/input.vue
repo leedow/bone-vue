@@ -2,7 +2,7 @@
 	 <div :class="[size.divsize, underline]">
 	 	<label class="bo-label" v-if="label.text" for="">{{label.text}}</label>
 	 	<div :class="[icon.css, state]">
-	 		<input :readonly="readonly" :class="[size.inputsize, formControl, label.css, styleReadonly]" type="{{type}}" name="{{name}}" v-model="val" placeholder="{{placeHolder}}" @focus="focus" @blur="blur">
+	 		<input :class="[size.inputsize, formControl, label.css]" :readonly="readonly" type="{{type}}" name="{{name}}" v-model="val" placeholder="{{placeHolder}}" @focus="focus" @blur="blur">
 	 		<i v-if="icon.text" class="icon iconfont" :class="[icon.text]"></i>
 	 		<div v-if="notice.flag" class="bo-tip bo-tip-top">{{notice.text}}</div>
 	 	</div>
@@ -102,11 +102,6 @@ export default {
 			default: false
 		}
 	},
-	created: function(){
-		if(this.readonly == 'readonly'){
-			this.styleReadonly = 'bo-readonly'
-		}
-	},
 	methods: {
 		verify: function(){
 			//console.log('verify input');
@@ -145,6 +140,11 @@ export default {
 			this.verify();
 		}
 	},
+	watch: {
+		'val': function(val, oldval){
+			this.verify();
+		}
+	},
 	events: {
 		'input-verify': function(){//检查格式
 			this.verify();
@@ -156,8 +156,7 @@ export default {
 				flag: false,
 				text: ''
 			},
-			pass:true,
-			styleReadonly: ''
+			pass:true
 		}
 	}
 }

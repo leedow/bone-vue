@@ -4,7 +4,7 @@
 	 	<div :class="[icon.css, state]">
 	 		<select :id="id" :class="[size.inputsize, formControl, label.css]" type="{{type}}" name="{{name}}" v-model="val" placeholder="{{placeHolder}}" @focus="focus" @blur="blur" @change="change" v-el:op>
 	 			<option v-if="placeHolder" value="">{{placeHolder}}</option>
-				<option v-for="item in data" :value="item.val" >{{item.text}}</option>
+				<option v-for="item in data" :value="item.val" :selected="item.selected">{{item.text}}</option>
 	 		</select>
 	 		<i v-if="icon.text" class="icon iconfont" :class="[icon.text]"></i>
 	 		<div v-if="notice.flag" class="bo-tip bo-tip-top">{{notice.text}}</div>
