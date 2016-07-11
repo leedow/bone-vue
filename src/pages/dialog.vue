@@ -9,9 +9,13 @@
 		</header-dock>
 	</header-layout>
 	<layout-main>
-		<div style="heigh:50px;"></div>
-		<btn @btn-click="open" name="打开弹窗"></btn>
+		<layout-box p="1111">
+			<btn type="primary" blank=true @btn-click="open"  name="打开弹窗"></btn>
+			<btn type="primary" blank=true @btn-click="notice" name="弹出提示"></btn>
+		</layout-box>
+		 
 		 <dialog :show.sync="show" @dialog-ok="ok" @dialog-no="no"></dialog>
+		 <notice :show.sync="showNotice" content="这是一个提示信息"></notice>
 	</layout-main>
 </template>
 
@@ -24,6 +28,7 @@ import {Icon} from '../components/common'
 import {FormGroup, FormInput} from '../components/form'
 import {List, ListItem} from '../components/list'
 import Dialog from '../components/assemble/dialog.vue'
+import Notice from '../components/assemble/notice.vue'
 
 
 export default {
@@ -43,7 +48,8 @@ export default {
 		FormInput,
 		List,
 		ListItem,
-		Dialog
+		Dialog,
+		Notice
 	},
 	ready:function(){
 	 
@@ -52,6 +58,9 @@ export default {
 	methods:{
 	 	open: function(){
 	 		this.show = true;
+	 	},
+	 	notice: function(){
+	 		this.showNotice = true;
 	 	},
 	 	ok: function(){
 	 		this.show = true;
@@ -66,7 +75,8 @@ export default {
 	data () {
 		return {
 			data: [],
-			show: false
+			show: false,
+			showNotice: false
 		}
 	}
 }

@@ -1,6 +1,6 @@
 <template>
-	<div id="bo-dialog-layout" v-show="show" transition="layout" transition-mode="out-in">
-		<div class="container bo-dialog" v-show="show" transition="dialog" transition-mode="out-in">
+	<div id="bo-dialog-layout" v-show="show" transition="fade" transition-mode="out-in">
+		<div class="container bo-dialog" v-show="show" :transition="animate" transition-mode="out-in">
 			<h3 class="dialog-title">{{config.title}}</h3>
 			<div class="dialog-content">{{content}}</div>
 			<div class="dialog-buttons" v-if="type=='confirm'">
@@ -14,29 +14,7 @@
 		</div>
 	</div>
 </template>
-<style>
-.layout-transition {   
-    transition: all .3s ease;   
-}
- 
-.layout-enter, .layout-leave {
-    opacity: 0;
-    
-}
- 
-.dialog-transition {   
-    transition: all .3s ease;   
-}
- 
-.dialog-enter, .dialog-leave {
-    opacity: 0;
-    transform: translate3d(0,-40px, 0);
-}
-
-</style>
 <script>
- 
-
 export default {
 	props: {
 		id: {
@@ -46,9 +24,11 @@ export default {
 			default: 'alert' //alert || confirm
 		},
 		config: {
-			default: {
-				title: '提 醒',
-				buttonsName: ['确 定', '取 消']
+			default () {
+				return{
+					title: '提 醒',
+					buttonsName: ['确 定', '取 消']
+				}
 			}
 		},
 		content: {
@@ -56,6 +36,9 @@ export default {
 		},
 		show: {
 			default: false
+		},
+		animate: {
+			default: 'slideDown'
 		}
 	},
 	created: function(){

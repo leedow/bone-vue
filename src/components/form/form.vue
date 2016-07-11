@@ -5,14 +5,19 @@
 		<i class="icon iconfont icon-roundclosefill"></i>
 	 	{{notice.text}}</p>
 	 </div>
+	 <notice :show.sync="showNotice" :content="noticeContent"></notice>
 </template>
 
 <script>
+import Notice from '../assemble/notice.vue'
 /*
  * On events: form-verify->input-verify|input-pass|input-wrong
  * Broadcast events: input-verify
  */
 export default {
+	components: {
+		Notice
+	},
 	props: {
 		type: {
 			coerce (val) {//sm|lg
@@ -27,7 +32,10 @@ export default {
 		verify: function(){
 			this.pass = true;
 			this.$broadcast('input-verify', '');
-			console.log(this.pass)
+			if(!this.pass){
+				this.showNotice = true;
+				this.noticeContent = "您输入的内容有误";
+			}
 		},
 		addData: function(key, val){
 			this.data[key] = val;
@@ -82,7 +90,9 @@ export default {
 			notice: {
 				show: false,
 				text: ''
-			}
+			},
+			showNotice: false,
+			noticeContent: ''
 		}
 	}
 }

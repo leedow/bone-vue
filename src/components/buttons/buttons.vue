@@ -35,10 +35,7 @@ export default {
 		},
 		name: {
 			default: ''
-		},
-		css: {
-			default: {}
-		}
+		} 
 	},
 	methods: {
 		clickEvent: function(){		 

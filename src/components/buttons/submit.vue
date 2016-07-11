@@ -35,10 +35,7 @@ export default {
 		},
 		name: {
 			default: ''
-		},
-		css: {
-			default: {}
-		}
+		} 
 	},
 	created: function(){
 		this.nameStamp = this.name;

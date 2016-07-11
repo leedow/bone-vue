@@ -10,18 +10,15 @@
 	</header-layout>
 	<layout-main>
 		<layout-box p="1111">
-			 <Btn>Buttons</Btn>
-			 <Btn icon="home">Buttons</Btn>		 
+			 <Btn name="Default"></Btn>
+			 <Btn icon="home" name="Default"></Btn>		 
 		</layout-box>	 
-		<layout-box m="1000" p="1111">
-			 
-			 <Btn size="lg" type="primary" icon="settings">Buttons</Btn>
-			 <Btn type="warm">Buttons</Btn>
-			 
+		<layout-box m="1000" p="1111">			 
+			 <Btn size="lg" type="primary" icon="settings" name="Primary Large"></Btn>
+			 <Btn type="warm" name="Primary"></Btn>			 
 		</layout-box>	
-		<layout-box m="1000" p="1111">
-			 
-			 <Btn type="warm" block=true size='lg' v-on:btn-click="test">Click Me</Btn>
+		<layout-box m="1000" p="1111">			 
+			 <Btn type="warm" block=true size='lg' v-on:btn-click="test" name="Block Large"></Btn>
 		</layout-box>			
 	</layout-main>
 </template>
